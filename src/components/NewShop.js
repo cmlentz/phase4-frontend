@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+const BASE_URL = 'http://localhost:3000'
+
 function NewShop({ onAddShop }) {
   const [name, setName] = useState("");
   const [city, setCity] = useState("");
@@ -11,7 +13,7 @@ function NewShop({ onAddShop }) {
       name,
       city,
     };
-    fetch("/shops", {
+    fetch(BASE_URL + "/shops", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

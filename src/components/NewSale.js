@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+const BASE_URL = 'http://localhost:3000'
+
 function NewSale({ shopId, onAddAnimal }) {
   const [priority, setPriority] = useState("");
   const [animalId, setAnimalId] = useState("");
@@ -7,7 +9,7 @@ function NewSale({ shopId, onAddAnimal }) {
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
-    fetch("/animals")
+    fetch(BASE_URL + "/animals")
       .then((r) => r.json())
       .then(setAnimals);
   }, []);
@@ -19,7 +21,7 @@ function NewSale({ shopId, onAddAnimal }) {
       shop_id: shopId,
       priority: Number(priority),
     };
-    fetch("/sales", {
+    fetch(BASE_URL + "/sales", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
