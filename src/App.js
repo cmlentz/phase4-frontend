@@ -1,21 +1,23 @@
-import './App.css';
-import GlobalStyles from './components/GlobalStyles';
-import FAQ from './components/FAQ/FAQ';
-import ContactCard from './components/ContactCard/ContactCard';
+import { Link, Route, Switch } from "react-router-dom";
+import Shop from "./Shop";
+import Home from "./Home";
+import "./App.css";
 
 function App() {
   return (
-    <>
     <div className="App">
-      <FAQ question="Where would you use styled components?" answer="Everywhere!" />
-      <ContactCard
-        avatarSrc="https://cdn.quotesgram.com/small/61/60/913087158-laugh.jpg"
-        name="Mittens"
-        email="meow@gmail.com"
-      />
+      <h1>
+        <Link to="/">Animania!!!</Link><br />
+      </h1>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route exact path="/shops/:id">
+          <Shop />
+        </Route>
+      </Switch>
     </div>
-    <GlobalStyles />
-    </>
   );
 }
 
