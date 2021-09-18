@@ -48,7 +48,7 @@ function NewShop({ onAddShop }) {
         <input
           type="text"
           id="city"
-          value={age}
+          value={city}
           onChange={(e) => setCity(e.target.value)}
         />
       </div>

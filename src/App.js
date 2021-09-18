@@ -1,6 +1,6 @@
 import { Link, Route, Switch } from "react-router-dom";
-import Shop from "./Shop";
-import Home from "./Home";
+import Shop from "./components/Shop";
+import Home from "./components/Home";
 import "./App.css";
 
 function App() {
