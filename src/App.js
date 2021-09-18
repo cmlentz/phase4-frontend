@@ -1,24 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import GlobalStyles from './components/GlobalStyles';
+import FAQ from './components/FAQ/FAQ';
+import ContactCard from './components/ContactCard/ContactCard';
 
 function App() {
   return (
+    <>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <FAQ question="Where would you use styled components?" answer="Everywhere!" />
+      <ContactCard
+        avatarSrc="https://cdn.quotesgram.com/small/61/60/913087158-laugh.jpg"
+        name="Mittens"
+        email="meow@gmail.com"
+      />
     </div>
+    <GlobalStyles />
+    </>
   );
 }
 

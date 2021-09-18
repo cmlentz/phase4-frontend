@@ -1,3 +1,6 @@
+import {createGlobalStyle} from 'styled-components/macro';
+
+const GlobalStyles = createGlobalStyle`
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -32,3 +35,5 @@ dl,
 dd {
   margin: 0;
 }
+`
+export default GlobalStyles;
