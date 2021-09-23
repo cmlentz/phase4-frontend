@@ -1,6 +1,14 @@
 import { useState } from "react";
+import {BASE_URL} from '../constraints/index.js';
+import styled from 'styled-components/macro';
 
-const BASE_URL = 'http://localhost:3000'
+const StyledButton = styled.button`
+font-size: 1rem;
+border: 1px solid;
+border-radius: 2px;
+background-color: limegreen;
+text-align: center;
+`
 
 function NewShop({ onAddShop }) {
   const [name, setName] = useState("");
@@ -35,9 +43,10 @@ function NewShop({ onAddShop }) {
 
   return (
     <form onSubmit={handleSubmit}>
+      <center>
       <h2>Add New Shop</h2>
       <div>
-        <label htmlFor="name">Name</label>
+        <label htmlFor="name">Name: </label>
         <input
           type="text"
           id="name"
@@ -46,7 +55,7 @@ function NewShop({ onAddShop }) {
         />
       </div>
       <div>
-        <label htmlFor="city">City</label>
+        <label htmlFor="city">City: </label>
         <input
           type="text"
           id="city"
@@ -59,7 +68,8 @@ function NewShop({ onAddShop }) {
           {err}
         </p>
       ))}
-      <button type="submit">Submit</button>
+      <StyledButton type="submit">Submit</StyledButton>
+      </center>
     </form>
   );
 }

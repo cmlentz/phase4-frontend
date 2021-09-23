@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-
-const BASE_URL = 'http://localhost:3000'
+import {BASE_URL} from '../constraints/index.js';
 
 function NewSale({ shopId, onAddAnimal }) {
   const [priority, setPriority] = useState("");

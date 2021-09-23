@@ -1,19 +1,41 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import NewShop from "./NewShop";
+import styled from 'styled-components/macro';
+import {BASE_URL} from '../constraints/index.js';
+
+const StyledHeader = styled.h2`
+font-size: 2rem;
+border: 1px solid;
+border-radius: 5px;
+background-image: linear-gradient(to left, rgba(255,0,0,0), rgba(255,0,0,1));
+text-align: center;
+`
+
+const StyledButton = styled.button`
+font-size: 1rem;
+border: 1px solid;
+border-radius: 2px;
+background-color: red;
+text-align: center;
+`
+
+const StyledList = styled.ul`
+text-align: center;
+`
 
 function Home() {
   const [shops, setShops] = useState([]);
   const [animals, setAnimals] = useState([]);
 
   useEffect(() => {
-    fetch("/animals")
+    fetch(BASE_URL + "/animals")
       .then((r) => r.json())
       .then(setAnimals);
   }, []);
 
   useEffect(() => {
-    fetch("/shops")
+    fetch(BASE_URL + "/shops")
       .then((r) => r.json())
       .then(setShops);
   }, []);
@@ -23,7 +45,7 @@ function Home() {
   }
 
   function handleDeleteAnimal(id) {
-    fetch(`/animals/${id}`, {
+    fetch(BASE_URL + `/animals/${id}`, {
       method: "DELETE",
     }).then((r) => {
       if (r.ok) {
@@ -36,31 +58,27 @@ function Home() {
 
   return (
     <div>
-      <h2>Animals</h2>
-      <ul>
+      <StyledHeader>Animals</StyledHeader>
+      <StyledList>
         {animals.map((animal) => (
           <li key={animal.id}>
-            <span>
-              {animal.name}
-            </span>
-            <button onClick={() => handleDeleteAnimal(animal.id)}>
+            <span>{animal.species}</span>
+            <StyledButton onClick={() => handleDeleteAnimal(animal.id)}>
               Delete
-            </button>
+            </StyledButton>
           </li>
         ))}
-      </ul>
+      </StyledList>
       <hr />
-      <h2>Shops</h2>
-      <ul>
+      <StyledHeader>Shops</StyledHeader>
+      <StyledList>
         {shops.map((shop) => (
           <li key={shop.id}>
-            <span>
-              {shop.name}
-            </span>
+            <span>{shop.name}</span>
             <Link to={`/shops/${shop.id}`}>View Animals</Link>
           </li>
         ))}
-      </ul>
+      </StyledList>
       <hr />
       <NewShop onAddShop={handleAddShop} />
     </div>

@@ -1,14 +1,24 @@
-import { Link, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import Shop from "./components/Shop";
 import Home from "./components/Home";
-import "./App.css";
+import styled from 'styled-components/macro';
+
+const StyledHeader = styled.h2`
+font-size: 3rem;
+border: 1px solid;
+border-radius: 5px;
+background-image: linear-gradient(180deg, red, yellow);
+text-align: center;
+`
 
 function App() {
   return (
+    <Router>
     <div className="App">
-      <h1>
-        <Link to="/">Animania!!!</Link><br />
-      </h1>
+      <StyledHeader>
+        <Link to="/">Animania!!!</Link>
+      </StyledHeader>
+      <br />
       <Switch>
         <Route exact path="/">
           <Home />
@@ -18,6 +28,7 @@ function App() {
         </Route>
       </Switch>
     </div>
+    </Router>
   );
 }
 

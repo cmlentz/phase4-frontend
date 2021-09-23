@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import NewSale from "./NewSale";
-
-const BASE_URL = 'http://localhost:3000'
+import {BASE_URL} from '../constraints/index.js';
 
 function Shop() {
   const [{ data: shop, error, status }, setShop] = useState({
@@ -13,7 +12,8 @@ function Shop() {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(BASE_URL + `/shops/${id}`).then((r) => {
+    fetch(BASE_URL + `/shops/${id}`)
+    .then((r) => {
       if (r.ok) {
         r.json().then((shop) =>
           setShop({ data: shop, error: null, status: "resolved" })
