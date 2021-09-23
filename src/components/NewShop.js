@@ -13,6 +13,7 @@ text-align: center;
 function NewShop({ onAddShop }) {
   const [name, setName] = useState("");
   const [city, setCity] = useState("");
+  const [state, setSt] = useState("");
   const [errors, setErrors] = useState([]);
 
   function handleSubmit(e) {
@@ -32,6 +33,7 @@ function NewShop({ onAddShop }) {
         r.json().then((shop) => {
           setName("");
           setCity("");
+          setSt("");
           setErrors([]);
           onAddShop(shop);
         });
@@ -61,6 +63,15 @@ function NewShop({ onAddShop }) {
           id="city"
           value={city}
           onChange={(e) => setCity(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="state">State: </label>
+        <input
+          type="text"
+          id="state"
+          value={state}
+          onChange={(e) => setSt(e.target.value)}
         />
       </div>
       {errors.map((err) => (

@@ -1,8 +1,16 @@
 import { useEffect, useState } from "react";
 import {BASE_URL} from '../constraints/index.js';
+import styled from 'styled-components/macro';
+
+const StyledButton = styled.button`
+font-size: 1rem;
+border: 1px solid;
+border-radius: 2px;
+background-color: limegreen;
+text-align: center;
+`
 
 function NewSale({ shopId, onAddAnimal }) {
-  const [priority, setPriority] = useState("");
   const [animalId, setAnimalId] = useState("");
   const [animals, setAnimals] = useState([]);
   const [errors, setErrors] = useState([]);
@@ -17,8 +25,7 @@ function NewSale({ shopId, onAddAnimal }) {
     e.preventDefault();
     const formData = {
       animal_id: Number(animalId),
-      shop_id: shopId,
-      priority: Number(priority),
+      shop_id: shopId
     };
     fetch(BASE_URL + "/sales", {
       method: "POST",
@@ -29,7 +36,6 @@ function NewSale({ shopId, onAddAnimal }) {
     }).then((r) => {
       if (r.ok) {
         r.json().then((animal) => {
-          setPriority("");
           setAnimalId("");
           setErrors([]);
           onAddAnimal(animal);
@@ -42,7 +48,7 @@ function NewSale({ shopId, onAddAnimal }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Add New Sale</h2>
+      <h2>Add New Animal</h2>
       <div>
         <label htmlFor="animal">Animal</label>
         <select
@@ -58,21 +64,13 @@ function NewSale({ shopId, onAddAnimal }) {
           ))}
         </select>
       </div>
-      <div>
-        <label htmlFor="priority">Priority</label>
-        <input
-          type="number"
-          id="priority"
-          value={priority}
-          onChange={(e) => setPriority(e.target.value)}
-        />
-      </div>
+
       {errors.map((err) => (
         <p key={err} style={{ color: "red" }}>
           {err}
         </p>
       ))}
-      <button type="submit">Submit</button>
+      <StyledButton type="submit">Submit</StyledButton>
     </form>
   );
 }

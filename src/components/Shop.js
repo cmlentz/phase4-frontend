@@ -43,6 +43,7 @@ function Shop() {
   return (
     <div>
       <h2>{shop.name}'s Animals</h2>
+      <h2>{shop.city}, {shop.state}</h2>
       <ul>
         {shop.animals.map((animal) => (
           <li key={animal.id}>
