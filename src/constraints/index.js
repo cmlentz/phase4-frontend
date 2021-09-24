@@ -1,1 +1,1 @@
-export const BASE_URL = 'http://localhost:9393'
+export const BASE_URL = 'https://cml-phase4-backend.herokuapp.com/'

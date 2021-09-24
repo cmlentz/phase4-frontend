@@ -2,6 +2,18 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import NewSale from "./NewSale";
 import {BASE_URL} from '../constraints/index.js';
+import ContactCard from './ContactCard/ContactCard';
+import styled from 'styled-components/macro';
+
+const LeftDiv = styled.div`
+float: left;
+width: 20%;
+padding: 10px;
+`
+const RightDiv = styled.div`
+float: left;
+width: 50%;
+`
 
 function Shop() {
   const [{ data: shop, error, status }, setShop] = useState({
@@ -42,17 +54,27 @@ function Shop() {
 
   return (
     <div>
-      <h2>{shop.name}'s Animals</h2>
-      <h2>{shop.city}, {shop.state}</h2>
-      <ul>
-        {shop.animals.map((animal) => (
-          <li key={animal.id}>
-            {animal.species}
-          </li>
-        ))}
-      </ul>
-      <hr />
-      <NewSale onAddAnimal={handleAddAnimal} shopId={shop.id} />
+      <div id="outer">
+        <LeftDiv>
+          <ContactCard
+            avatarSrc="https://cdn.quotesgram.com/small/61/60/913087158-laugh.jpg"
+            name={shop.name}
+            location={ `${shop.city}, ${shop.state}` }
+            email={`${shop.name}@petfinder.com`}
+          />
+        </LeftDiv>
+        <RightDiv>
+          <ul>
+            <li><h2>Available Pets: </h2></li>
+            {shop.animals.map((animal) => (
+              <li key={animal.id}>
+                {animal.species}
+              </li>
+            ))}
+          </ul>
+        </RightDiv>
+        <NewSale onAddAnimal={handleAddAnimal} shopId={shop.id} />
+      </div>
     </div>
   );
 }

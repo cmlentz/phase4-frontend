@@ -47,7 +47,7 @@ function NewShop({ onAddShop }) {
     <form onSubmit={handleSubmit}>
       <center>
       <h2>Add New Shop</h2>
-      <div>
+      <span>
         <label htmlFor="name">Name: </label>
         <input
           type="text"
@@ -55,8 +55,8 @@ function NewShop({ onAddShop }) {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-      </div>
-      <div>
+      </span>
+      <span>
         <label htmlFor="city">City: </label>
         <input
           type="text"
@@ -64,8 +64,8 @@ function NewShop({ onAddShop }) {
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
-      </div>
-      <div>
+      </span>
+      <span>
         <label htmlFor="state">State: </label>
         <input
           type="text"
@@ -73,7 +73,7 @@ function NewShop({ onAddShop }) {
           value={state}
           onChange={(e) => setSt(e.target.value)}
         />
-      </div>
+      </span>
       {errors.map((err) => (
         <p key={err} style={{ color: "red" }}>
           {err}

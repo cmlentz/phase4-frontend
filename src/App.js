@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 import Shop from "./components/Shop";
 import Home from "./components/Home";
+import GlobalStyles from "./components/GlobalStyles"
 import styled from 'styled-components/macro';
 
 const StyledHeader = styled.h2`
@@ -13,6 +14,8 @@ text-align: center;
 
 function App() {
   return (
+    <>
+    <GlobalStyles />
     <Router>
     <div className="App">
       <StyledHeader>
@@ -29,6 +32,7 @@ function App() {
       </Switch>
     </div>
     </Router>
+    </>
   );
 }
 

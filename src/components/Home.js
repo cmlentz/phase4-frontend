@@ -62,19 +62,18 @@ function Home() {
       <StyledList>
         {animals.map((animal) => (
           <li key={animal.id}>
-            <span>{animal.species}</span>
+            <span>{animal.species}  </span>
             <StyledButton onClick={() => handleDeleteAnimal(animal.id)}>
               Delete
             </StyledButton>
           </li>
         ))}
       </StyledList>
-      <hr />
       <StyledHeader>Shops</StyledHeader>
       <StyledList>
         {shops.map((shop) => (
           <li key={shop.id}>
-            <span>{shop.name}</span>
+            <span>{shop.name}  </span>
             <Link to={`/shops/${shop.id}`}>View Animals</Link>
           </li>
         ))}

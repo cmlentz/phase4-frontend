@@ -50,7 +50,7 @@ function NewSale({ shopId, onAddAnimal }) {
     <form onSubmit={handleSubmit}>
       <h2>Add New Animal</h2>
       <div>
-        <label htmlFor="animal">Animal</label>
+        <label htmlFor="animal">Animal: </label>
         <select
           id="animal"
           value={animalId}
@@ -63,6 +63,7 @@ function NewSale({ shopId, onAddAnimal }) {
             </option>
           ))}
         </select>
+        <StyledButton type="submit">Submit</StyledButton>
       </div>
 
       {errors.map((err) => (
@@ -70,7 +71,7 @@ function NewSale({ shopId, onAddAnimal }) {
           {err}
         </p>
       ))}
-      <StyledButton type="submit">Submit</StyledButton>
+      
     </form>
   );
 }
