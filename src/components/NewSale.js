@@ -63,6 +63,7 @@ function NewSale({ shopId, onAddAnimal }) {
             </option>
           ))}
         </select>
+        <span>  </span>
         <StyledButton type="submit">Submit</StyledButton>
       </div>
 

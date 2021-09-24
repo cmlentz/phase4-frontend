@@ -12,15 +12,19 @@ background-image: linear-gradient(to left, rgba(255,0,0,0), rgba(255,0,0,1));
 text-align: center;
 `
 
+const ReverseStyledHeader = styled.h2`
+font-size: 2rem;
+border: 1px solid;
+border-radius: 5px;
+background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));
+text-align: center;
+`
+
 const StyledButton = styled.button`
 font-size: 1rem;
 border: 1px solid;
 border-radius: 2px;
 background-color: red;
-text-align: center;
-`
-
-const StyledList = styled.ul`
 text-align: center;
 `
 
@@ -58,8 +62,17 @@ function Home() {
 
   return (
     <div>
-      <StyledHeader>Animals</StyledHeader>
-      <StyledList>
+      <StyledHeader>Shops</StyledHeader>
+      <ul>
+        {shops.map((shop) => (
+          <li key={shop.id}>
+            <span>{shop.name}  </span>
+            <Link to={`/shops/${shop.id}`}>Visit Shop</Link>
+          </li>
+        ))}
+      </ul>
+      <ReverseStyledHeader>Animals</ReverseStyledHeader>
+      <ul>
         {animals.map((animal) => (
           <li key={animal.id}>
             <span>{animal.species}  </span>
@@ -68,16 +81,7 @@ function Home() {
             </StyledButton>
           </li>
         ))}
-      </StyledList>
-      <StyledHeader>Shops</StyledHeader>
-      <StyledList>
-        {shops.map((shop) => (
-          <li key={shop.id}>
-            <span>{shop.name}  </span>
-            <Link to={`/shops/${shop.id}`}>View Animals</Link>
-          </li>
-        ))}
-      </StyledList>
+      </ul>
       <hr />
       <NewShop onAddShop={handleAddShop} />
     </div>

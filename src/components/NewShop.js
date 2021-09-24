@@ -79,6 +79,7 @@ function NewShop({ onAddShop }) {
           {err}
         </p>
       ))}
+      <span>  </span>
       <StyledButton type="submit">Submit</StyledButton>
       </center>
     </form>
